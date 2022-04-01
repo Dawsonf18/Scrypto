@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Group Project</title>
+    <title>Scrypto</title>
 </head>
 <body>
         <!--Header-->
@@ -17,37 +17,32 @@
         </header>
     
         <!--Main Area-->
-        <main class="container-fluid">
+        <main class="container-fluid d-flex justify-content-center mt-3">
             
-            <!--Search/Results -->
-            <div class="col-2 bg-secondary">
+            <!--Search Div-->
+            <div class="col-6 bg-secondary rounded border border-warning">
                 <!--Search Header-->
-                <h2 class="mt-2 mb-2 text-light">Search <span class="text-success">Stocks</span> & <span class="text-warning">Crypto</span>:</h2>
-                <!--Search Section-->
-                <section class="input-group mb-3">
-                    <!--Search Input-->
-                    <input id="searchedCity" type="text" class="form-control text-light bg-dark border border-warning" placeholder="Enter Stock or Crypto" aria-label="Enter Stock or Crypto" aria-describedby="searchBtn">
-                    <!--Search Submit Button-->
-                    <div class="input-group-append">
-                        <button class="btn btn-success btn-outline-warning" type="button" id="searchBtn"><i class="fas fa-search"></i></button>
-                    </div>
-                </section>
-                <!--Search History Section-->
-                <section class="border-top border-success" >
-                    <ul id="searchHistory" class="list-group"></ul>
-                </section>
-            </div>
-    
-            <!--City/Forecast-->
-            <div class="col-10">
-                <!--Current Weather Section-->
-                <section>
-                    <h3 id="currentCity"></h3>
-    
-                </section>
-                <!--5 Day Forecast Section-->
-                <section>
-    
+                <h2 class="mt-2 mb-2 text-light text-center">Search<br /> <span class="text-success">Stocks</span> & <span class="text-warning">Crypto</span>:</h2>
+                <!--Search Input Section-->
+                <section class="row">
+                    <!-- Stock Search Section-->
+                    <section class="input-group mb-3 col-6">
+                        <!--Stock Search Input-->
+                        <input id="searchStockInput" type="text" class="form-control text-light bg-dark border border-success" placeholder="Search Stock" aria-label="Search Stock" aria-describedby="searchBtn">
+                        <!--Stock Search Submit Button-->
+                        <div class="input-group-append">
+                            <button class="btn btn-success btn-outline-success" type="button" id="searchStockBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </section>
+                    <!-- Crypto Search Section-->
+                    <section class="input-group mb-3 col-6">
+                        <!--Crypto Search Input-->
+                        <input id="searchCryptoInput" type="text" class="form-control text-light bg-dark border border-warning" placeholder="Search Crypto" aria-label="Search Crypto" aria-describedby="searchBtn">
+                        <!--Crypto Search Submit Button-->
+                        <div class="input-group-append">
+                            <button class="btn btn-warning btn-outline-warning" type="button" id="searchCryptoBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </section>
                 </section>
             </div>
 
