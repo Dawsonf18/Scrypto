@@ -9,21 +9,49 @@
     <title>Group Project</title>
 </head>
 <body>
-    <header class="container-fluid text-center text-white bg-dark p-2">Welcome to Scrypto</header>
-
-    <div class="s&c-search p-2">
-        <div class="row">
-            <div class="col-lg-3 bg-light">
-                <h5 class="mt-1">Search Stocks or Cryptocurrency:</h5>
-                <div class="input-group mb-3">
-                    <input id="s&c-enter" type="text" class="form-control" placeholder="Enter stock or crypto" aria-label="Enter stock or crypto">
+        <!--Header-->
+        <header class="container-fluid bg-dark border border-success text-center p-3 m-0 row justify-content-around">
+            <p class="text-success">Stocks</p>
+            <h1><span class="text-success">Scr</span><span class="text-warning"><span class="text-light">y</span>pto</span></h1>
+            <p class="text-warning">Crypto</p>
+        </header>
+    
+        <!--Main Area-->
+        <main class="container-fluid">
+            
+            <!--Search/Results -->
+            <div class="col-2 bg-secondary">
+                <!--Search Header-->
+                <h2 class="mt-2 mb-2 text-light">Search <span class="text-success">Stocks</span> & <span class="text-warning">Crypto</span>:</h2>
+                <!--Search Section-->
+                <section class="input-group mb-3">
+                    <!--Search Input-->
+                    <input id="searchedCity" type="text" class="form-control text-light bg-dark border border-warning" placeholder="Enter Stock or Crypto" aria-label="Enter Stock or Crypto" aria-describedby="searchBtn">
+                    <!--Search Submit Button-->
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="search-button">
-                            <i class="fas fa-search"></i>
-                        </button>
+                        <button class="btn btn-success btn-outline-warning" type="button" id="searchBtn"><i class="fas fa-search"></i></button>
                     </div>
+                </section>
+                <!--Search History Section-->
+                <section class="border-top border-success" >
+                    <ul id="searchHistory" class="list-group"></ul>
+                </section>
+            </div>
+    
+            <!--City/Forecast-->
+            <div class="col-10">
+                <!--Current Weather Section-->
+                <section>
+                    <h3 id="currentCity"></h3>
+    
+                </section>
+                <!--5 Day Forecast Section-->
+                <section>
+    
+                </section>
+            </div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script> 
 </body>
 
