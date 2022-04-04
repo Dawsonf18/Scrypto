@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Scrypto</title>
 </head>
-<body class="">
+<body class="m-0 p-0">
         <!--Header-->
         <header class="container-fluid bg-dark border border-success text-center p-3 m-0 row justify-content-around">
             <p class="text-success">Stocks</p>
@@ -18,10 +18,10 @@
         </header>
     
         <!--Main Area-->
-        <main class=" d-flex justify-content-center mt-3 mr-0">
+        <main class="d-flex flex-column mt-3 mr-0">
             
             <!--Search Div-->
-            <div class="container-fluid bg-secondary rounded border border-warning">
+            <div class="col-6 align-self-center bg-secondary rounded border border-warning">
                 <!--Search Header-->
                 <h2 class="mt-2 mb-2 text-light text-center">Search<br /> <span class="text-success">Stocks</span> & <span class="text-warning">Crypto</span>:</h2>
                 <!--Search Input Section-->
@@ -46,7 +46,30 @@
                     </section>
                 </section>
             </div>
-
+            <div class="row mt-5 justify-content-around">
+                <Section id="stockDisplay" class="border rounded bg-dark p-5">
+                        <div class="text-center text-light">
+                            <h3 id="stockNameDisplay" class=>Facebook</h3>
+                            <h3 id="stockSymbol">(FB)</h3>
+                            <h3 id="stockDateDisplay">04/01/22</h3>
+                            <p id="stockHighDisplay">High: $100.00</p>
+                            <p id="stockLowDisplay">Low: $85.00</p>
+                            <p id="stockOpenDisplay">Open: $90.00</p>
+                            <p id="stockCloseDisplay">Close: $98.00</p>
+                </Section>
+                <section id="cryptoDisplay" class="border rounded bg-dark p-5">
+                        <div class="text-center text-light">
+                            <h3 id="stockNameDisplay">Facebook</h3>
+                            <h3 id="stockSymbol">(FB)</h3>
+                            <h3 id="stockDateDisplay">04/01/22</h3>
+                            <p id="stockHighDisplay">High: $100.00</p>
+                            <p id="stockLowDisplay">Low: $85.00</p>
+                            <p id="stockOpenDisplay">Open: $90.00</p>
+                            <p id="stockCloseDisplay">Close: $98.00</p>
+                        </div>
+                </section>
+            </div>
+        </main>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

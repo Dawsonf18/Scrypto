@@ -13,7 +13,7 @@ axios.request(options).then(function (response) {
 
     var options = {
         method: 'GET',
-        url: "https://yfapi.net/v8/finance/chart/" + stockSymbol + "?range=1mo&region=US&interval=1d&lang=en&events=div%2Csplit",
+        url: "https://yfapi.net/v8/finance/chart/" + stockSymbol + "?range=5d&region=US&interval=1d&lang=en&events=div%2Csplit",
         headers: {
           'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
         }
@@ -33,4 +33,12 @@ axios.request(options).then(function (response) {
 $("#searchStockBtn").on("click", function() {
     var searchedStock = $("#searchStockInput").val()
     getStockData(searchedStock)    
+<<<<<<< HEAD
 });
+=======
+})
+
+var testDate = new Date(1648843204 * 1000)
+console.log(testDate)
+
+>>>>>>> f703f91c6365a95d5c54fa9a2a97b32a20bdbdcd
