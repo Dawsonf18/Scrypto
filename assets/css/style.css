@@ -3,4 +3,6 @@ header p {
 }
 body {
     background-image: conic-gradient(#f0ad4e, #292b2c, #5cb85c);
+    background-repeat: no-repeat;
+    background-size: auto 1200px;
 }
