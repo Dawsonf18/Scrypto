@@ -37,3 +37,4 @@ $("#searchStockBtn").on("click", function() {
 
 var testDate = new Date(1648843204 * 1000)
 console.log(testDate)
+
