@@ -33,3 +33,4 @@ axios.request(options).then(function (response) {
 $("#searchStockBtn").on("click", function() {
     var searchedStock = $("#searchStockInput").val()
     getStockData(searchedStock)    
+});
