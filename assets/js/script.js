@@ -1,21 +1,35 @@
 var getStockData = function(stockName) {
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-            'X-RapidAPI-Key': '4a78c1e05dmsh2841aa9a1e9a1e3p1c7bb1jsn2eca213d0c16'
-        }
-    };
 
-    fetch("https://yh-finance.p.rapidapi.com/auto-complete?q=" + stockName +"&region=US", options)
-        .then(function(response){
-            response.json().then(function(data) {
-                console.log(data)
-            })
-        })
+var options = {
+  method: 'GET',
+  url: 'https://yfapi.net/v6/finance/autocomplete?region=US&lang=en&query=' + stockName,
+  headers: {
+    'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
+  }
+};
+
+axios.request(options).then(function (response) {
+	var stockSymbol = response.data.ResultSet.Result[0].symbol
+
+    var options = {
+        method: 'GET',
+        url: "https://yfapi.net/v8/finance/chart/" + stockSymbol + "?range=1mo&region=US&interval=1d&lang=en&events=div%2Csplit",
+        headers: {
+          'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
+        }
+      };
+
+      axios.request(options).then(function (response) {
+          var startPoint = response.data.chart.result[0]
+          console.log(startPoint)
+      }).catch(function (error) {
+        console.error(error);
+    });
+}).catch(function (error) {
+	console.error(error);
+});
 }
 
-$('#searchStockBtn').on('click', function() {
-    var searchedStock = $('#searchStockInput').val();
-    getStockData(searchedStock); 
-})
+$("#searchStockBtn").on("click", function() {
+    var searchedStock = $("#searchStockInput").val()
+    getStockData(searchedStock)    
