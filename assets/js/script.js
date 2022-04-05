@@ -58,26 +58,25 @@ $('#searchStockBtn').on('click', function () {
     getStockData(searchedStock);
 });
 
- // crypto data retrival function
- var getCryptoData = function(cryptoName){
-    var apiUrl = 'https://api.coingecko.com/api/v3/search?query=' + cryptoName;
-    fetch(apiUrl).then (function(response) {
-        response.json().then(function(data){
-            console.log(data)
-        })
-    })
-       
-    };
+    // crypto data retrival function
+    var getCryptoData = function(cryptoName) {
+        apiUrl = "https://api.coingecko.com/api/v3/coins/" + cryptoName + "?localization=false"
 
-
+        fetch(apiUrl)
+            .then(function(response) {
+                response.json().then(function(data) {
+                    var cryptoDate = (data.market_data.last_updated).slice(0, 10)
+                    var cryptoPrice = data.market_data.current_price.usd
+                    var cryptoHigh = data.market_data.high_24h.usd
+                    var cryptoLow = data.market_data.low_24h.usd
+                    console.log(cryptoDate, cryptoPrice, cryptoLow, cryptoHigh)
+                    console.log(data)
+                })
+            })
+    }
         
 
     $('#searchCryptoBtn').on('click', function() {
-        var searchedCrypto = $('searchCryptoInput').val();
+        var searchedCrypto = $('#searchCryptoInput').val();
         getCryptoData(searchedCrypto);
     })
-    
-
-
-
-    
