@@ -60,30 +60,24 @@ $('#searchStockBtn').on('click', function () {
 
  // crypto data retrival function
  var getCryptoData = function(cryptoName){
-    var options = {
-        method: 'GET',
-        url: 'https://api.nomics.com/v1/candles?key=&interval=1d&currency=' + cryptoName + '&start=2018-04-14T00%3A00%3A00Z&end=2018-05-14T00%3A00%3A00Z',
-        headers: {
-            'x-api-key': 'c3ec441d435be8c8fbc170cc2ab09cd2f7407791'
-        }
+    var apiUrl = 'https://api.coingecko.com/api/v3/search?query=' + cryptoName;
+    fetch(apiUrl).then (function(response) {
+        response.json().then(function(data){
+            console.log(data)
+        })
+    })
        
     };
-    // First API request/response
-    axios.request(options).then(function(response) {
-        var cryptoSymbol = response.data.chart.result[0];
-        console.log(response);
 
-    })
+
         
 
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('searchCryptoInput').val();
         getCryptoData(searchedCrypto);
     })
+    
 
-
-     
-}
 
 
     
