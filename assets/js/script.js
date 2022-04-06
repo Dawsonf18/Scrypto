@@ -65,15 +65,29 @@ $('#searchStockBtn').on('click', function () {
         fetch(apiUrl)
             .then(function(response) {
                 response.json().then(function(data) {
-                    var cryptoDate = (data.market_data.last_updated).slice(0, 10)
-                    var cryptoPrice = data.market_data.current_price.usd
-                    var cryptoHigh = data.market_data.high_24h.usd
-                    var cryptoLow = data.market_data.low_24h.usd
-                    console.log(cryptoDate, cryptoPrice, cryptoLow, cryptoHigh)
-                    console.log(data)
+                    //crypto data variables
+                    var cryptoDate = (data.market_data.last_updated).slice(0, 10);
+                    var cryptoSymbol = data.symbol;
+                    var cryptoImage = data.image.thumb;
+                    var cryptoPrice = data.market_data.current_price.usd;
+                    var cryptoHigh = data.market_data.high_24h.usd;
+                    var cryptoLow = data.market_data.low_24h.usd;
+                    //crypto data display
+                    $('#cryptoNameDisplay').text(cryptoName);
+                    $('#cryptoImageDisplay').attr('src', cryptoImage);
+                    $('#cryptoSymbol').text(cryptoSymbol);
+                    $('#cryptoDateDisplay').text(cryptoDate);
+                    $('#cryptoPriceDisplay').text(cryptoPrice);
+                    $('#cryptoHighDisplay').text(cryptoHigh);
+                    $('#cryptoLowDisplay').text(cryptoLow);
+                    $('#cryptoDisplay').addClass('border bg-dark');
+                    $('#cryptoImageDisplay').removeClass('d-none');
+
+                    console.log(data);
                 })
             })
     }
+
         
 
     $('#searchCryptoBtn').on('click', function() {
