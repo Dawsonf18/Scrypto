@@ -5,39 +5,39 @@ var getStockData = function (stockName) {
         method: 'GET',
         url: 'https://yfapi.net/v6/finance/autocomplete?region=US&lang=en&query=' + stockName,
         headers: {
-            'x-api-key': 'U5guRICSkz61O4soqPQgh4HCjdIuKx45a0kNH0uU'
+            'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
         }
     };
-    // First API request/response
+    // First API Request/Response
     axios.request(options).then(function (response) {
-        //stock Symbol data
+        // Stock Symbol Data
         var stockSymbol = response.data.ResultSet.Result[0].symbol
-        // second API options
+        // Second API Options
         var options = {
             method: 'GET',
             url: "https://yfapi.net/v8/finance/chart/" + stockSymbol + "?range=5d&region=US&interval=1d&lang=en&events=div%2Csplit",
             headers: {
-                'x-api-key': 'U5guRICSkz61O4soqPQgh4HCjdIuKx45a0kNH0uU'
+                'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
             }
         };
-        // second API request/response
+        // Second API Request/Response
         axios.request(options).then(function (response) {
-            // data startpoint 
+            // Data Startpoint 
             var startPoint = response.data.chart.result[0];
             console.log(startPoint);
-            //latest stock info
+            // latest Stock Info
             var latestHigh = (startPoint.indicators.quote[0].high[4]).toString().slice(0, 6);
             var latestLow = (startPoint.indicators.quote[0].low[4]).toString().slice(0, 6);
             var latestOpen = (startPoint.indicators.quote[0].open[4]).toString().slice(0, 6);
             var latestClose = (startPoint.indicators.quote[0].close[4]).toString().slice(0,6);
 
-            // latest stock date
+            // latest Stock Date
             var latestDate = new Date(startPoint.timestamp[4] * 1000);
             var latestMonth = latestDate.getMonth() + 1;
             var latestDay = latestDate.getDate();
             var latestYear = latestDate.getFullYear();
 
-            // stock section display
+            // Stock Section Display
             $('#stockNameDisplay').text(stockName);
             $('#stockSymbol').text(stockSymbol);
             $('#stockDateDisplay').text('(' + latestMonth + '/' + latestDay + '/' + latestYear + ')');
@@ -46,11 +46,51 @@ var getStockData = function (stockName) {
             $('#stockOpenDisplay').text('Open: $' + latestOpen);
             $('#stockCloseDisplay').text('Close: $' + latestClose);
             $('#stockDisplay').addClass('border bg-secondary')
+
+            for (let i = 3; i >= 0; i--) {
+            // Past Stock Info
+            var pastHigh = (startPoint.indicators.quote[0].high[i]).toString().slice(0, 6);
+            var pastLow = (startPoint.indicators.quote[0].low[i]).toString().slice(0, 6);
+            var pastOpen = (startPoint.indicators.quote[0].open[i]).toString().slice(0, 6);
+            var pastClose = (startPoint.indicators.quote[0].close[i]).toString().slice(0,6);
+            // Past Stock Date
+            var pastDate = new Date(startPoint.timestamp[i] * 1000);
+            var pastMonth = pastDate.getMonth() + 1;
+            var pastDay = pastDate.getDate();
+            var pastYear = pastDate.getFullYear();
+            // Past Stock Elements
+            var pastStock = document.createElement("div")
+            var pastStockName = document.createElement("h3")
+            var pastStockSymbol = document.createElement("h3")
+            var pastStockDate = document.createElement("h3")
+            var pastStockHigh = document.createElement("p")
+            var pastStockLow = document.createElement("p")
+            var pastStockOpen = document.createElement("p")
+            var pastStockClose = document.createElement("p")
+            // Past Stock Display
+            $(pastStock).addClass("text-center carousel-item text-light")
+            $(pastStockName).text(stockName)
+            $(pastStockSymbol).text(stockSymbol)
+            $(pastStockDate).text('(' + pastMonth + '/' + pastDay + '/' + pastYear + ')')
+            $(pastStockHigh).text('High: $' + pastHigh)
+            $(pastStockLow).text('Low: $' + pastLow)
+            $(pastStockOpen).text('Open: $' + pastOpen)
+            $(pastStockClose).text('High: $' + pastClose)
+            // Append
+            $(pastStock).append(pastStockName, pastStockSymbol, pastStockDate, pastStockHigh, pastStockLow, pastStockOpen, pastStockClose)
+            $("#innerStockDisplay").append(pastStock)
+            }
         })
     }).catch(function(error){
+<<<<<<< HEAD
         $('#errorModal').modal('show')
         
         
+=======
+        if (error) {
+            $("#errorModal").modal("show")
+        }
+>>>>>>> 47559325507e8037face4d9ca5b4dc273d9eb79a
     })
 }
 
@@ -84,6 +124,10 @@ $('#searchStockBtn').on('click', function () {
                     $("#cryptoDisplay").addClass('border bg-secondary')
                     $("#cryptoImageDisplay").removeClass("d-none")
                     console.log(data)
+                }).catch(function(error){
+                    if (error) {
+                        $("#errorModal").modal("show")
+                    }
                 })
             })
     }
