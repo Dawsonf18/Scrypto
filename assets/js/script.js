@@ -96,12 +96,6 @@ $('#searchStockBtn').on('click', function () {
     var searchedStock = $('#searchStockInput').val();
     // Stock Data Function Call
     getStockData(searchedStock);
-<<<<<<< HEAD
-    //Get Search History For Stocks
-    
-=======
-
->>>>>>> 6a497ce8be377f2fa5e30206961b1b3671552db7
 });
 
 // Stock Favorites Click Function
