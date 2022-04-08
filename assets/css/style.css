@@ -6,3 +6,6 @@ body {
     background-repeat: no-repeat;
     background-size: auto 1200px;
 }
+header li:hover {
+    cursor: pointer;
+}
