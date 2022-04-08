@@ -45,7 +45,9 @@ var getStockData = function (stockName) {
             $('#stockLowDisplay').text('Low: $' + latestLow);
             $('#stockOpenDisplay').text('Open: $' + latestOpen);
             $('#stockCloseDisplay').text('Close: $' + latestClose);
-            $('#stockDisplay').addClass('border bg-secondary')
+            $('#stockDisplay').addClass('border bg-dark')
+            $('#slideLeft').removeClass('d-none')
+            $('#slideRight').removeClass('d-none')
 
             for (let i = 3; i >= 0; i--) {
             // Past Stock Info
@@ -68,14 +70,14 @@ var getStockData = function (stockName) {
             var pastStockOpen = document.createElement("p")
             var pastStockClose = document.createElement("p")
             // Past Stock Display
-            $(pastStock).addClass("text-center carousel-item text-light")
+            $(pastStock).addClass("text-center carousel-item text-success")
             $(pastStockName).text(stockName)
             $(pastStockSymbol).text(stockSymbol)
             $(pastStockDate).text('(' + pastMonth + '/' + pastDay + '/' + pastYear + ')')
             $(pastStockHigh).text('High: $' + pastHigh)
             $(pastStockLow).text('Low: $' + pastLow)
             $(pastStockOpen).text('Open: $' + pastOpen)
-            $(pastStockClose).text('High: $' + pastClose)
+            $(pastStockClose).text('Close: $' + pastClose)
             // Append
             $(pastStock).append(pastStockName, pastStockSymbol, pastStockDate, pastStockHigh, pastStockLow, pastStockOpen, pastStockClose)
             $("#innerStockDisplay").append(pastStock)
@@ -88,12 +90,49 @@ var getStockData = function (stockName) {
     })
 }
 
+// Stock Search Click Function
 $('#searchStockBtn').on('click', function () {
+    // Searched Stock Name
     var searchedStock = $('#searchStockInput').val();
+    // Stock Data Function Call
     getStockData(searchedStock);
+<<<<<<< HEAD
     //Get Search History For Stocks
     
+=======
+
+>>>>>>> 6a497ce8be377f2fa5e30206961b1b3671552db7
 });
+
+// Stock Favorites Click Function
+$("#addStockBtn").on('click', () => {
+    var index = 0
+    // Searched Stock Name
+    var pastSearchedStock = $('#searchStockInput').val();
+    // Stock History Elements
+    var pastStockSearch = document.createElement("li")
+    var pastStockLink = document.createElement("a")
+    var pastStockDelete = document.createElement("button")
+    // Stock History Classes/Attributes/Text
+    $(pastStockSearch).addClass("text-success")
+    $(pastStockLink).addClass("dropdown-item")
+    $(pastStockLink).text(pastSearchedStock)
+    
+    $(pastStockSearch).attr("id", index)
+    //$(pastStockDelete).attr("type", "button")
+    //$(pastStockDelete).addClass("btn btn-danger position-absolute top-50 end-0 translate-middle-y h-100")
+    //pastStockDelete.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>'
+    // Stock History Append
+    $(pastStockSearch).append(pastStockLink)
+    //$(pastStockSearch).append(pastStockDelete)
+    $("#stockHistory").append(pastStockSearch)
+    // Stock Function Call
+    $(pastStockLink).on("click", () => {
+        getStockData($(this).text())
+    })
+
+    index++
+})
 
     // crypto data retrival function
     var getCryptoData = function(cryptoName) {
@@ -117,7 +156,7 @@ $('#searchStockBtn').on('click', function () {
                     $("#cryptoPriceDisplay").text("Current Price: $" + cryptoPrice)
                     $("#cryptoHighDisplay").text("24Hr High: $" + cryptoHigh)
                     $("#cryptoLowDisplay").text("24Hr Low: $" + cryptoLow)
-                    $("#cryptoDisplay").addClass('border bg-secondary')
+                    $("#cryptoDisplay").addClass('border bg-dark')
                     $("#cryptoImageDisplay").removeClass("d-none")
                     console.log(data)
                 }).catch(function(error){
