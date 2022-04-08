@@ -82,21 +82,17 @@ var getStockData = function (stockName) {
             }
         })
     }).catch(function(error){
-<<<<<<< HEAD
-        $('#errorModal').modal('show')
-        
-        
-=======
         if (error) {
             $("#errorModal").modal("show")
         }
->>>>>>> 47559325507e8037face4d9ca5b4dc273d9eb79a
     })
 }
 
 $('#searchStockBtn').on('click', function () {
     var searchedStock = $('#searchStockInput').val();
     getStockData(searchedStock);
+    //Get Search History For Stocks
+    
 });
 
     // crypto data retrival function
@@ -132,9 +128,8 @@ $('#searchStockBtn').on('click', function () {
             })
     }
 
-        
-
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('#searchCryptoInput').val();
         getCryptoData(searchedCrypto);
-    })
+        
+    });
