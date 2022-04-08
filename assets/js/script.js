@@ -98,35 +98,41 @@ $('#searchStockBtn').on('click', function () {
     getStockData(searchedStock);
 });
 
+// Stock History Array
+var stockHistory = JSON.parse(localStorage.getItem("stockHistory")) || []
+
 // Stock Favorites Click Function
 $("#addStockBtn").on('click', () => {
-    var index = 0
     // Searched Stock Name
     var pastSearchedStock = $('#searchStockInput').val();
     // Stock History Elements
     var pastStockSearch = document.createElement("li")
-    var pastStockLink = document.createElement("a")
-    var pastStockDelete = document.createElement("button")
     // Stock History Classes/Attributes/Text
-    $(pastStockSearch).addClass("text-success")
-    $(pastStockLink).addClass("dropdown-item")
-    $(pastStockLink).text(pastSearchedStock)
-    
-    $(pastStockSearch).attr("id", index)
-    //$(pastStockDelete).attr("type", "button")
-    //$(pastStockDelete).addClass("btn btn-danger position-absolute top-50 end-0 translate-middle-y h-100")
-    //pastStockDelete.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>'
+    $(pastStockSearch).addClass("dropdown-item text-success")
+    $(pastStockSearch).text(pastSearchedStock)
     // Stock History Append
-    $(pastStockSearch).append(pastStockLink)
-    //$(pastStockSearch).append(pastStockDelete)
     $("#stockHistory").append(pastStockSearch)
     // Stock Function Call
-    $(pastStockLink).on("click", () => {
-        getStockData($(this).text())
+    $(pastStockSearch).on("click", () => {
+        getStockData($(event.target).text())
     })
-
-    index++
+    // Local Storage
+    stockHistory.push(pastSearchedStock)
+    localStorage.setItem("stockHistory", JSON.stringify(stockHistory))
 })
+
+var loadStockHistory = () => {
+    for (i = 0; i < stockHistory.length; i++) {
+        var storedStock = stockHistory[i]
+        var storedStockEl = document.createElement("li")
+        $(storedStockEl).addClass("dropdown-item text-success")
+        $(storedStockEl).text(storedStock)
+        $("#stockHistory").append(storedStockEl)
+        $(storedStockEl).on("click", () => {
+            getStockData($(event.target).text())
+        })
+    }
+}
 
     // crypto data retrival function
     var getCryptoData = function(cryptoName) {
@@ -164,5 +170,48 @@ $("#addStockBtn").on('click', () => {
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('#searchCryptoInput').val();
         getCryptoData(searchedCrypto);
+<<<<<<< HEAD
         
     });
+=======
+    })
+
+    // Crypto History Array
+    var cryptoHistory = JSON.parse(localStorage.getItem("cryptoHistory")) || []
+
+// Crypto Favorites Click Function
+$("#addCryptoBtn").on('click', () => {
+    // Searched Crypto Name
+    var pastSearchedCrypto = $('#searchCryptoInput').val();
+    // Crypto History Elements
+    var pastCryptoSearch = document.createElement("li")
+    // Crypto History Classes/Attributes/Text
+    $(pastCryptoSearch).addClass("dropdown-item text-warning")
+    $(pastCryptoSearch).text(pastSearchedCrypto)
+    // Crypto History Append
+    $("#cryptoHistory").append(pastCryptoSearch)
+    // Crypto Function Call
+    $(pastCryptoSearch).on("click", () => {
+        getCryptoData($(event.target).text())
+    })
+    // Local Storage
+    cryptoHistory.push(pastSearchedCrypto)
+    localStorage.setItem("cryptoHistory", JSON.stringify(cryptoHistory))
+})
+
+var loadCryptoHistory = () => {
+    for (i = 0; i < cryptoHistory.length; i++) {
+        var storedCrypto = cryptoHistory[i]
+        var storedCryptoEl = document.createElement("li")
+        $(storedCryptoEl).addClass("dropdown-item text-warning")
+        $(storedCryptoEl).text(storedCrypto)
+        $("#cryptoHistory").append(storedCryptoEl)
+        $(storedCryptoEl).on("click", () => {
+            getCryptoData($(event.target).text())
+        })
+    }
+}
+
+    loadStockHistory()
+    loadCryptoHistory()
+>>>>>>> 5037a1f2e2876448faf4362a1b323c19d1963d3d
