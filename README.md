@@ -1,4 +1,4 @@
-# group-project
+# Group-Project--Scrypto!
 
 ## Purpose
 Scrypto is a user friendly interface created with javascript, to allow users to search any stock or cryptocurrency they like. When the user inputs the name of a stock or crypto, they will be given the following: 
