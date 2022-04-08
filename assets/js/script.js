@@ -96,7 +96,6 @@ $('#searchStockBtn').on('click', function () {
     var searchedStock = $('#searchStockInput').val();
     // Stock Data Function Call
     getStockData(searchedStock);
-
 });
 
 // Stock History Array
@@ -159,9 +158,6 @@ var loadStockHistory = () => {
                     $("#cryptoLowDisplay").text("24Hr Low: $" + cryptoLow)
                     $("#cryptoDisplay").addClass('border bg-dark')
                     $("#cryptoImageDisplay").removeClass("d-none")
-
-                    
-
                     console.log(data)
                 }).catch(function(error){
                     if (error) {
@@ -170,7 +166,6 @@ var loadStockHistory = () => {
                 })
             })
     }
-        
 
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('#searchCryptoInput').val();
