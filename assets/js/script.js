@@ -170,10 +170,6 @@ var loadStockHistory = () => {
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('#searchCryptoInput').val();
         getCryptoData(searchedCrypto);
-<<<<<<< HEAD
-        
-    });
-=======
     })
 
     // Crypto History Array
@@ -214,4 +210,3 @@ var loadCryptoHistory = () => {
 
     loadStockHistory()
     loadCryptoHistory()
->>>>>>> 5037a1f2e2876448faf4362a1b323c19d1963d3d
