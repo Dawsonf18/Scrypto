@@ -27,7 +27,7 @@ When the user clicks on the plus sign next to the search button, the information
 
 
 ## Website
-https://dawsonf18.github.io/group-project/
+https://gerardmennella21.github.io/group-project/
 
 ## Contribution
 Made by [Dawson FIlion and Gerard Mennella]
