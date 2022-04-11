@@ -1,11 +1,11 @@
-// stock data retrival function
+// Stock Data Retrieval Function
 var getStockData = function (stockName) {
-    // First API options
+    // First API Options
     var options = {
         method: 'GET',
         url: 'https://yfapi.net/v6/finance/autocomplete?region=US&lang=en&query=' + stockName,
         headers: {
-            'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
+            'x-api-key': 'RmbjGdCtE45KmjG0xnezP4Cxc8bbUCm55lqL5jLM'
         }
     };
     // First API Request/Response
@@ -17,7 +17,7 @@ var getStockData = function (stockName) {
             method: 'GET',
             url: "https://yfapi.net/v8/finance/chart/" + stockSymbol + "?range=5d&region=US&interval=1d&lang=en&events=div%2Csplit",
             headers: {
-                'x-api-key': 'oRR9sOAR2w9p3NQiFl5fS5A5jwP2FS0k9A033nLd'
+                'x-api-key': 'RmbjGdCtE45KmjG0xnezP4Cxc8bbUCm55lqL5jLM'
             }
         };
         // Second API Request/Response
@@ -121,6 +121,14 @@ $("#addStockBtn").on('click', () => {
     localStorage.setItem("stockHistory", JSON.stringify(stockHistory))
 })
 
+// Clear Stock Function
+$("#stockDelete").on("click", function() {
+    stockHistory.splice(0)
+    localStorage.setItem("stockHistory", JSON.stringify(stockHistory))
+    $("#stockHistory li").remove()
+})
+
+// Stock Favorites Load Function
 var loadStockHistory = () => {
     for (i = 0; i < stockHistory.length; i++) {
         var storedStock = stockHistory[i]
@@ -134,7 +142,7 @@ var loadStockHistory = () => {
     }
 }
 
-    // crypto data retrival function
+    // Crypto Data Retrieval Function
     var getCryptoData = function(cryptoName) {
         apiUrl = "https://api.coingecko.com/api/v3/coins/" + cryptoName + "?localization=false"
 
@@ -167,6 +175,7 @@ var loadStockHistory = () => {
             })
     }
 
+    // Crypto Search Click Function
     $('#searchCryptoBtn').on('click', function() {
         var searchedCrypto = $('#searchCryptoInput').val();
         getCryptoData(searchedCrypto);
@@ -195,6 +204,14 @@ $("#addCryptoBtn").on('click', () => {
     localStorage.setItem("cryptoHistory", JSON.stringify(cryptoHistory))
 })
 
+// Clear Crypto Function
+$("#cryptoDelete").on("click", function() {
+    cryptoHistory.splice(0)
+    localStorage.setItem("cryptoHistory", JSON.stringify(cryptoHistory))
+    $("#cryptoHistory li").remove()
+})
+
+// Crypto Favorites Load Function
 var loadCryptoHistory = () => {
     for (i = 0; i < cryptoHistory.length; i++) {
         var storedCrypto = cryptoHistory[i]
@@ -208,5 +225,6 @@ var loadCryptoHistory = () => {
     }
 }
 
-    loadStockHistory()
-    loadCryptoHistory()
+// Function Calls
+loadStockHistory()
+loadCryptoHistory()
