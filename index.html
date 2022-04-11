@@ -10,43 +10,46 @@
     <title>Scrypto</title>
 </head>
 <body class="m-0 p-0">
-  <!-- Modal -->
-  <div class="modal fade" id="errorModal"  tabindex="-1" aria-labelledby="errorModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="errorModal">Invalid Entry</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Error Modal -->
+        <div class="modal fade" id="errorModal"  tabindex="-1" aria-labelledby="errorModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="errorModal">Invalid Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Please try again
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          Please try again
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
         <!--Header-->
-        <header class="container-fluid bg-dark border border-success text-center p-3 m-0 d-flex justify-content-around">
+        <header class="container-fluid bg-dark border-bottom border-light text-center p-3 m-0 d-flex justify-content-around">
           <div class="dropdown">
             <a id="stockDropDown" role="button" class="dropdown-toggle text-success" data-bs-toggle="dropdown" aria-expanded="false"><p class="text-success">Stocks</p></a>
-            <ul id="stockHistory" class="dropdown-menu bg-dark border-light" aria-labelledby="stockDropDown"></ul>
+            <ul id="stockHistory" class="dropdown-menu bg-dark border-light" aria-labelledby="stockDropDown">
+              <button id="stockDelete" class="btn btn-danger w-100"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </ul>
           </div>
             <h1><span class="text-success">Scr</span><span class="text-light">y</span><span class="text-warning">pto</span></h1>
             <div class="dropdown">
               <a id="cryptoDropDown" role="button" class="dropdown-toggle text-warning" data-bs-toggle="dropdown" aria-expanded="false">
                 <p class="text-warning">Crypto</p>
               </a>
-              <ul id="cryptoHistory" class="dropdown-menu bg-dark border-light" aria-labelledby="cryptoDropDown"></ul>
+              <ul id="cryptoHistory" class="dropdown-menu bg-dark border-light" aria-labelledby="cryptoDropDown">
+                <button id="cryptoDelete" class="btn btn-danger w-100"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              </ul>
             </div>
         </header>
     
         <!--Main Area-->
-        <main class="d-flex flex-column mt-3 mr-0">
-            
+        <main class="d-flex flex-column mt-3 mr-0">            
             <!--Search Div-->
-            <div class="col-6 align-self-center bg-dark rounded border border-light">
+            <div class="col-lg-6 col-sm-12 align-self-center bg-dark rounded border border-light">
                 <!--Search Header-->
                 <h2 class="mt-2 mb-2 text-light text-center">Search<br /> <span class="text-success">Stocks</span> & <span class="text-warning">Crypto</span>:</h2>
                 <!--Search Input Section-->
@@ -59,6 +62,7 @@
                         <div class="input-group-append">
                             <button class="btn btn-success btn-outline-light" type="button" id="searchStockBtn"><i class="fas fa-search"></i></button>
                         </div>
+                        <!--Stock Add Favorite Button-->
                         <div class="input-group-append">
                           <button class="btn btn-success btn-outline-light" type="button" id="addStockBtn"><i class="fa-solid fa-plus"></i></button>
                       </div>
@@ -71,14 +75,17 @@
                         <div class="input-group-append">
                             <button class="btn btn-warning btn-outline-light" type="button" id="searchCryptoBtn"><i class="fas fa-search"></i></button>
                         </div>
+                        <!--Crypto Add Favorite Button-->
                         <div class="input-group-append">
                           <button class="btn btn-warning btn-outline-light" type="button" id="addCryptoBtn"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </section>
                 </section>
             </div>
+            <!--Display Section-->
             <div class="d-flex mt-5 justify-content-around">
-                <Section id="stockDisplay" class="carousel slide rounded p-5" data-bs-ride="carousel" data-bs-interval="false">
+                <!--Stock Display Section-->
+                <Section id="stockDisplay" class="carousel col-6 slide rounded p-5" data-bs-ride="carousel" data-bs-interval="false">
                         <div id="innerStockDisplay" class="carousel-inner">
                             <div class="text-center carousel-item active text-success">
                                 <h3 id="stockNameDisplay"></h3>
@@ -90,16 +97,19 @@
                                 <p id="stockCloseDisplay"></p>
                             </div>
                         </div>
+                        <!--Carousel Button Left-->
                         <button id="slideLeft" class="carousel-control-prev d-none" type="button" data-bs-target="#stockDisplay" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                           </button>
+                          <!--Carousel Button Right-->
                           <button id="slideRight" class="carousel-control-next d-none" type="button" data-bs-target="#stockDisplay" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                           </button>
                 </Section>
-                <section id="cryptoDisplay" class="rounded p-5">
+                <!--Crypto Display Section-->
+                <section id="cryptoDisplay" class="col-6 rounded p-5">
                         <div class="text-center text-warning">
                             <h3 id="cryptoNameDisplay"></h3>
                             <img id="cryptoImageDisplay" alt="Current Selected Crypto Icon" class="d-none">
@@ -112,20 +122,6 @@
                 </section>
             </div>
         </main>
-        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    
-                    <div class="modal-body">
-                        <p>Invalid Input, please try again.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Okay!</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
