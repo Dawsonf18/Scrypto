@@ -27,10 +27,12 @@ When the user clicks on the plus sign next to the search button, the information
 
 
 ## Website
-https://gerardmennella21.github.io/Scrypto/
+
+https://dawsonf18.github.io/Scrypto/
+
 
 ## Contribution
-Made by [Dawson FIlion and Gerard Mennella]
+Made by [Dawson Filion and Gerard Mennella]
 
 ## Screenshot
 ![Screenshot](./assets/Images/Screenshot.png)
